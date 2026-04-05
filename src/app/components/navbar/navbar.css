@@ -1,0 +1,25 @@
+.nav-link,
+.brand {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  color: inherit;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.95rem;
+  cursor: pointer !important;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible,
+.brand:hover,
+.brand:focus-visible {
+  color: #ffffff;
+  outline: none;
+}

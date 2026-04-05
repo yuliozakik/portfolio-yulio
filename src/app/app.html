@@ -1,147 +1,56 @@
-<div class="min-h-screen bg-slate-950 text-white overflow-x-hidden">
+﻿<div class="page-wrapper bg-dark text-white min-vh-100">
+  <app-navbar></app-navbar>
 
-  <!-- BACKGROUND BLOBS -->
-  <div class="absolute top-0 left-0 w-96 h-96 bg-blue-500 opacity-20 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 opacity-20 rounded-full blur-3xl"></div>
-
-  <!-- NAVBAR -->
-  <header class="fixed w-full bg-slate-900/70 backdrop-blur-md z-50 border-b border-white/10">
-    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-      <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-        Yulio's Portofolio
-      </h1>
-
-      <nav class="hidden md:flex gap-8 text-sm">
-        <a href="#home" class="hover:text-blue-400 transition">Home</a>
-        <a href="#about" class="hover:text-blue-400 transition">About</a>
-        <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
-        <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
-        <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section id="home" class="pt-40 pb-32 px-6 relative z-10">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-center gap-10">
-
-      <!-- TEXT -->
-      <div class="animate-fadeUp">
-        <h2 class="text-5xl md:text-6xl font-extrabold leading-tight">
-          Hi, I'm
-          <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Yulio Zaki Kurniawan
-          </span>
-        </h2>
-
-        <p class="mt-6 text-gray-400 text-lg">
-          Fullstack Developer crafting modern, scalable, and beautiful web applications.
-        </p>
-
-        <div class="mt-8 flex gap-4">
-          <a href="#projects"
-             class="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-xl font-semibold transition hover:scale-105 shadow-lg">
-            View Projects
-          </a>
-
-          <button
-            class="border border-white/30 hover:bg-white/10 px-6 py-3 rounded-xl transition hover:scale-105">
-            Download CV
-          </button>
-        </div>
-      </div>
-
-      <!-- IMAGE -->
-      <div class="flex justify-center animate-float">
-        <img src="/assets/images/photo.jpeg"
-            class="w-72 h-72 object-cover rounded-full border-4 border-blue-500 shadow-2xl">
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="py-24 px-6 bg-slate-900">
-    <div class="max-w-4xl mx-auto text-center animate-fadeUp">
-      <h3 class="text-3xl font-bold mb-6 text-blue-400">About Me</h3>
-      <p class="text-gray-400 leading-relaxed">
-        I build high-performance web apps using Angular, TypeScript, and Node.js.
-        Passionate about clean architecture, UI/UX, and scalable backend systems.
-      </p>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="py-24 px-6">
-    <div class="max-w-6xl mx-auto">
-      <h3 class="text-3xl font-bold text-center mb-16 text-blue-400">Skills</h3>
-
-      <div class="grid md:grid-cols-3 gap-10">
-
-        <div class="bg-slate-900 p-8 rounded-2xl border border-white/10 hover:border-blue-500 hover:shadow-blue-500/20 hover:shadow-xl transition duration-300">
-          <h4 class="text-xl font-semibold mb-4">Frontend</h4>
-          <p class="text-gray-400">Angular • TypeScript • Tailwind</p>
-        </div>
-
-        <div class="bg-slate-900 p-8 rounded-2xl border border-white/10 hover:border-purple-500 hover:shadow-purple-500/20 hover:shadow-xl transition duration-300">
-          <h4 class="text-xl font-semibold mb-4">Backend</h4>
-          <p class="text-gray-400">Node.js • Express • Prisma</p>
-        </div>
-
-        <div class="bg-slate-900 p-8 rounded-2xl border border-white/10 hover:border-pink-500 hover:shadow-pink-500/20 hover:shadow-xl transition duration-300">
-          <h4 class="text-xl font-semibold mb-4">Database</h4>
-          <p class="text-gray-400">PostgreSQL • MySQL</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="py-24 px-6 bg-slate-900">
-    <div class="max-w-6xl mx-auto">
-      <h3 class="text-3xl font-bold text-center mb-16 text-blue-400">Projects</h3>
-
-      <div class="grid md:grid-cols-2 gap-10">
-
-        <div class="bg-slate-800 rounded-2xl overflow-hidden border border-white/10 hover:scale-105 transition duration-300">
-          <img src="https://picsum.photos/600/400" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h4 class="text-xl font-semibold mb-2">POS System</h4>
-            <p class="text-gray-400 mb-4">
-              Modern POS built with Angular & Node.js.
+  <main class="pt-5">
+    <section id="top" class="hero position-relative py-5 overflow-hidden">
+      <div class="hero-gradient"></div>
+        <div class="container px-3 px-md-0">
+        <div class="row align-items-center gy-5">
+          <div class="col-lg-7 text-center text-lg-start">
+            <p class="text-primary text-uppercase letter-spacing-3 mb-3 fw-semibold">Software Engineer</p>
+            <h1 class="hero-title fw-bold mb-4">Hi, I’m <span class="text-white">Yulio Zaki.</span></h1>
+            <p class="intro-text mb-4">
+              I build accessible, polished web applications using Angular, Spring Boot, and Node.js.
+              My work sits at the intersection of clean engineering and thoughtful design.
             </p>
-            <button class="text-blue-400 hover:underline">View Project →</button>
+
+            <div class="d-flex flex-column flex-sm-row align-items-center gap-3 justify-content-center justify-content-lg-start">
+              <a href="mailto:yuliozaki16@gmail.com" class="btn btn-primary btn-lg rounded-pill px-4 py-3">Email me</a>
+              <a href="#projects" class="hero-link">View projects →</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 text-center">
+            <div class="hero-avatar shadow-lg rounded-circle overflow-hidden border border-white border-opacity-10 mx-auto">
+              <img src="/assets/images/profile.jpeg" alt="Yulio Zaki" class="img-fluid h-100 w-100">
+            </div>
           </div>
         </div>
-
-        <div class="bg-slate-800 rounded-2xl overflow-hidden border border-white/10 hover:scale-105 transition duration-300">
-          <img src="https://picsum.photos/601/400" class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h4 class="text-xl font-semibold mb-2">Dashboard App</h4>
-            <p class="text-gray-400 mb-4">
-              Analytics dashboard with real-time data.
-            </p>
-            <button class="text-blue-400 hover:underline">View Project →</button>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="py-24 px-6 text-center">
-    <h3 class="text-3xl font-bold mb-6 text-blue-400">Let's Work Together</h3>
-    <p class="text-gray-400 mb-8">Have a project in mind? Let's build something amazing.</p>
-    <button class="bg-gradient-to-r from-blue-500 to-purple-500 px-8 py-3 rounded-xl font-semibold hover:scale-105 transition shadow-xl">
-      Contact Me
-    </button>
-  </section>
+    <section id="about" class="py-5">
+      <app-about></app-about>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-6 text-center text-gray-500 text-sm">
-    © 2026 Your Name. All rights reserved.
+    <section id="skills" class="py-5 bg-body-tertiary bg-opacity-10">
+      <app-skills></app-skills>
+    </section>
+
+    <section id="experience" class="py-5">
+      <app-experience></app-experience>
+    </section>
+
+    <section id="projects" class="py-5 bg-body-tertiary bg-opacity-10">
+      <app-projects></app-projects>
+    </section>
+
+    <section id="contact" class="py-5 text-center">
+      <app-contact></app-contact>
+    </section>
+  </main>
+
+  <footer class="text-center py-4 text-muted bg-black bg-opacity-25">
+    © 2026 Yulio Zaki Kurniawan
   </footer>
-
 </div>
