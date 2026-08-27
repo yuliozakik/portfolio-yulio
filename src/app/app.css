@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+/* The hero clears the fixed header; every other section relies on its own
+   vertical padding. */
+.section--hero {
+  padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px) + clamp(1rem, 5vw, 3rem));
+  min-height: min(100dvh, 46rem);
+  display: flex;
+  align-items: center;
+}
+
+/*
+ * Flex items default to `min-width: auto`, which refuses to shrink below the
+ * content's max-content width — that let the hero's container hold its full
+ * 74rem on a phone and pushed the whole document sideways. `min-width: 0` lets
+ * it shrink to the viewport instead.
+ */
+.section--hero > app-home {
+  flex: 1 1 auto;
+  min-width: 0;
+}

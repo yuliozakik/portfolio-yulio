@@ -1,0 +1,101 @@
+<div class="container hero">
+  <div class="hero__grid">
+    <div class="hero__content">
+      @if (profile.available) {
+        <p class="badge" [appReveal]="0">
+          <span class="badge__dot"></span>
+          Available for new opportunities
+        </p>
+      }
+
+      <h1 class="hero__title" [appReveal]="60">
+        <span class="hero__greeting">Hi, I'm</span>
+        <span class="gradient-text">{{ profile.shortName }}.</span>
+      </h1>
+
+      <p class="hero__rotator" [appReveal]="120">
+        <span class="hero__rotator-prefix">I work as a</span>
+        <span class="hero__rotator-word" [attr.data-role]="currentRole()">{{ currentRole() }}</span>
+      </p>
+
+      <p class="hero__lede" [appReveal]="180">{{ profile.summary }}</p>
+
+      <div class="hero__actions cluster" [appReveal]="240">
+        <button type="button" class="btn btn--primary" (click)="go('projects')">
+          <app-icon name="layers" [size]="18" />
+          <span>View my work</span>
+        </button>
+        <a class="btn btn--ghost" [href]="'mailto:' + profile.email">
+          <app-icon name="mail" [size]="18" />
+          <span>Email me</span>
+        </a>
+      </div>
+
+      <ul class="hero__social cluster" [appReveal]="300" aria-label="Elsewhere">
+        @for (link of socialLinks; track link.label) {
+          <li>
+            <a
+              class="social-link"
+              [href]="link.href"
+              [attr.aria-label]="link.label"
+              [title]="link.label"
+              [attr.target]="link.href.startsWith('http') ? '_blank' : null"
+              [attr.rel]="link.href.startsWith('http') ? 'noopener noreferrer' : null"
+            >
+              <app-icon [name]="link.icon" [size]="18" />
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="hero__aside" [appReveal]="160">
+      <div class="portrait">
+        <div class="portrait__glow" aria-hidden="true"></div>
+        <div class="portrait__frame">
+          <img
+            [src]="profile.avatar"
+            [alt]="profile.name"
+            width="360"
+            height="360"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="portrait__chip portrait__chip--top">
+          <app-icon name="map-pin" [size]="15" />
+          <span>{{ profile.location }}</span>
+        </div>
+        <div class="portrait__chip portrait__chip--bottom">
+          <app-icon name="star" [size]="15" />
+          <span>{{ experienceLabel() }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats strip -->
+  <ul class="stats auto-grid" style="--min: 9rem; --gap: 1px" aria-label="At a glance">
+    @for (stat of stats; track stat.label; let i = $index) {
+      <li class="stat" [appReveal]="i * 80">
+        <span class="stat__value" [appCountUp]="stat.value" [suffix]="stat.suffix">
+          {{ stat.value }}{{ stat.suffix }}
+        </span>
+        <span class="stat__label">{{ stat.label }}</span>
+      </li>
+    }
+  </ul>
+
+  <!-- Marquee of technologies -->
+  <div class="marquee" [appReveal]="120" aria-hidden="true">
+    <div class="marquee__track">
+      @for (pass of [0, 1]; track pass) {
+        <ul class="marquee__group">
+          @for (tech of techCloud(); track tech) {
+            <li class="marquee__item">{{ tech }}</li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+  <p class="visually-hidden">Technologies: {{ techCloud().join(', ') }}</p>
+</div>

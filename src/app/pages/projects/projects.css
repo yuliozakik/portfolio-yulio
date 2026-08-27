@@ -1,0 +1,157 @@
+:host {
+  display: block;
+}
+
+/* ---------- Filters ---------- */
+.filters {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  /* On narrow screens the chips scroll sideways instead of stacking into a
+     tall block that pushes the grid off-screen. */
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filters .chip {
+  scroll-snap-align: start;
+  flex: none;
+}
+
+.filters__status {
+  font-size: var(--step--1);
+  color: var(--text-subtle);
+  margin-bottom: var(--space-5);
+}
+
+/* ---------- Project card ---------- */
+.project-grid {
+  align-items: stretch;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  animation: card-in var(--dur-mid) var(--ease-out);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+.project__head {
+  display: flex;
+  /* Top-aligned so the date lines up with the first badge row rather than
+     floating against the middle when the platform badges wrap. */
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.project__head .project__period {
+  padding-top: 0.3rem;
+}
+
+.project__platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.project__platform {
+  padding: 0.22rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(120deg, var(--brand-500), var(--accent-500));
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* The APK build is the distinguishing detail on the HC Eazy products, so it
+   reads as a distinct badge rather than another brand-coloured pill. */
+.project__platform:not(:first-child) {
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+}
+
+.project__period {
+  font-size: var(--step--1);
+  color: var(--text-subtle);
+  white-space: nowrap;
+}
+
+.project__title {
+  font-size: var(--step-2);
+  margin-bottom: var(--space-2);
+}
+
+.project__client {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--brand-300);
+  margin-bottom: var(--space-3);
+}
+
+.project__summary {
+  margin-bottom: var(--space-4);
+}
+
+.project__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.project__highlights li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.project__highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--brand-400);
+}
+
+.project__tech {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Empty state ---------- */
+.project-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}

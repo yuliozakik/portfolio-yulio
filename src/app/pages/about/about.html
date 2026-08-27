@@ -1,0 +1,96 @@
+<div class="container">
+  <header class="section-head" [appReveal]="0">
+    <p class="eyebrow">About</p>
+    <h2 class="section-title">Engineer first, <span class="gradient-text">problem-solver</span> always</h2>
+    <p class="section-lede">{{ profile.tagline }}</p>
+  </header>
+
+  <div class="about">
+    <div class="about__main card" [appReveal]="60">
+      <p class="about__text">{{ profile.summary }}</p>
+
+      <dl class="about__facts">
+        <div class="fact">
+          <dt class="fact__label">
+            <app-icon name="map-pin" [size]="15" />
+            Based in
+          </dt>
+          <dd class="fact__value">{{ profile.location }}</dd>
+        </div>
+        <div class="fact">
+          <dt class="fact__label">
+            <app-icon name="mail" [size]="15" />
+            Email
+          </dt>
+          <dd class="fact__value">
+            <a [href]="'mailto:' + profile.email">{{ profile.email }}</a>
+          </dd>
+        </div>
+        <div class="fact">
+          <dt class="fact__label">
+            <app-icon name="phone" [size]="15" />
+            Phone
+          </dt>
+          <dd class="fact__value">
+            <a [href]="'tel:' + profile.phone.split(' ').join('')">{{ profile.phone }}</a>
+          </dd>
+        </div>
+        <div class="fact">
+          <dt class="fact__label">
+            <app-icon name="check" [size]="15" />
+            Status
+          </dt>
+          <dd class="fact__value">
+            {{ profile.available ? 'Open to opportunities' : 'Not currently looking' }}
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+    <ul class="about__values">
+      @for (value of values; track value.title; let i = $index) {
+        <li class="value card card--interactive card--spotlight" [appReveal]="120 + i * 90">
+          <span class="value__icon">
+            <app-icon [name]="value.icon" [size]="20" />
+          </span>
+          <h3 class="value__title">{{ value.title }}</h3>
+          <p class="card-text">{{ value.text }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="education" [appReveal]="180">
+    <h3 class="education__heading">
+      <app-icon name="star" [size]="18" />
+      Education
+    </h3>
+    <ul class="auto-grid" style="--min: 18rem">
+      @for (item of education; track item.institution) {
+        <li class="card edu-card">
+          <p class="edu-card__period mono">{{ item.period }}</p>
+          <h4 class="edu-card__title">{{ item.qualification }}</h4>
+          <p class="edu-card__institution">{{ item.institution }}</p>
+          <p class="card-text">{{ item.detail }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="education" [appReveal]="220">
+    <h3 class="education__heading">
+      <app-icon name="check" [size]="18" />
+      Certified courses
+      <span class="education__count">{{ courses.length }}</span>
+    </h3>
+    <ul class="courses">
+      @for (course of courses; track course.title) {
+        <li class="course card">
+          <span class="course__track" [attr.data-track]="course.track">{{ course.track }}</span>
+          <span class="course__title">{{ course.title }}</span>
+        </li>
+      }
+    </ul>
+    <p class="courses__source text-subtle">LePKom Universitas Gunadarma</p>
+  </div>
+</div>

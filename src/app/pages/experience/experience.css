@@ -1,0 +1,181 @@
+:host {
+  display: block;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.tl-item {
+  position: relative;
+  /* Rail sits left of the card on every breakpoint — a single-column timeline
+     reads better on phones than an alternating one. */
+  padding-left: 3rem;
+}
+
+/* The connecting rail, drawn per item so it stops at the last marker. */
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: 1.06rem;
+  top: 2.25rem;
+  bottom: calc(-1 * var(--space-5));
+  width: 2px;
+  background: linear-gradient(180deg, var(--border-strong), transparent);
+}
+
+.tl-item--last::before {
+  display: none;
+}
+
+.tl-marker {
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface-solid);
+  color: var(--text-subtle);
+  box-shadow: var(--shadow-sm);
+  z-index: 1;
+}
+
+.tl-marker--current {
+  background: linear-gradient(135deg, var(--brand-500), var(--accent-500));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: var(--glow);
+}
+
+/* ---------- Card ---------- */
+.tl-card__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.tl-card__role {
+  font-size: var(--step-2);
+  margin-bottom: 0.2rem;
+}
+
+.tl-card__company {
+  font-weight: 600;
+  color: var(--brand-300);
+}
+
+.tl-card__client {
+  font-size: var(--step--1);
+  color: var(--text-subtle);
+}
+
+.tl-card__when {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.tl-card__period {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--step--1);
+  color: var(--text-subtle);
+  white-space: nowrap;
+}
+
+.tl-card__summary {
+  margin-bottom: var(--space-4);
+}
+
+/* ---------- Toggle ---------- */
+.tl-card__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface-sunken);
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.tl-card__toggle:hover {
+  color: var(--text);
+  border-color: var(--ring);
+}
+
+.tl-card__toggle app-icon {
+  transition: transform var(--dur-mid) var(--ease-out);
+}
+
+.tl-card__toggle[aria-expanded='true'] app-icon {
+  transform: rotate(90deg);
+  color: var(--brand-400);
+}
+
+/* ---------- Highlights ---------- */
+.tl-card__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  animation: unfold var(--dur-mid) var(--ease-out);
+}
+
+@keyframes unfold {
+  from {
+    opacity: 0;
+    transform: translateY(-0.4rem);
+  }
+}
+
+.highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.highlight app-icon {
+  margin-top: 0.3rem;
+  color: var(--ok-fg);
+}
+
+/* ---------- Stack tags ---------- */
+.tl-card__stack {
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 48rem) {
+  .tl-card__head {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .tl-card__when {
+    flex-direction: column;
+    align-items: flex-end;
+    flex: none;
+  }
+}

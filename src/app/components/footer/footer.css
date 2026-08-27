@@ -1,0 +1,166 @@
+:host {
+  display: contents;
+}
+
+.site-footer {
+  margin-top: var(--space-7);
+  padding-block: clamp(2.5rem, 6vw, 4rem) var(--space-5);
+  border-top: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg-elevated) 60%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.footer__grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* ---------- Brand column ---------- */
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: var(--space-3);
+}
+
+.footer__mark {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--brand-500), var(--accent-500));
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.footer__name {
+  display: block;
+  font-weight: 700;
+}
+
+.footer__role {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.footer__tagline {
+  max-width: 26rem;
+  color: var(--text-muted);
+  font-size: var(--step--1);
+  line-height: 1.7;
+}
+
+/* ---------- Link columns ---------- */
+.footer__heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin-bottom: var(--space-3);
+}
+
+.footer__nav ul,
+.footer__connect ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.25rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.footer__link:hover {
+  color: var(--brand-300);
+  text-decoration: none;
+}
+
+.footer__link--icon app-icon {
+  color: var(--text-subtle);
+}
+
+.footer__link--icon:hover app-icon {
+  color: var(--brand-400);
+}
+
+/* ---------- Base row ---------- */
+.footer__base {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--text-subtle);
+}
+
+/* ---------- Back to top ---------- */
+.fab {
+  position: fixed;
+  right: clamp(1rem, 4vw, 2rem);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(1rem, 4vw, 2rem));
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+  backdrop-filter: blur(12px);
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.75rem) scale(0.9);
+  transition: opacity var(--dur-mid) var(--ease-out),
+    transform var(--dur-mid) var(--ease-spring), visibility var(--dur-mid) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.fab--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.fab:hover {
+  border-color: var(--ring);
+  box-shadow: var(--glow), var(--shadow-lg);
+}
+
+@media (min-width: 48rem) {
+  .footer__grid {
+    grid-template-columns: 1.6fr 1fr 1fr;
+  }
+
+  .footer__base {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

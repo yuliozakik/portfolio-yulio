@@ -1,0 +1,142 @@
+<div class="container">
+  <header class="section-head section-head--center" [appReveal]="0">
+    <p class="eyebrow">Contact</p>
+    <h2 class="section-title">Let's build <span class="gradient-text">something</span></h2>
+    <p class="section-lede">
+      Open to engineering roles and freelance work in web and mobile. Tell me what you're building.
+    </p>
+  </header>
+
+  <div class="contact">
+    <aside class="contact__aside" [appReveal]="60">
+      <ul class="channels">
+        @for (channel of channels; track channel.label) {
+          <li class="channel card">
+            <span class="channel__icon">
+              <app-icon [name]="channel.icon" [size]="18" />
+            </span>
+            <div class="channel__body">
+              <p class="channel__label">{{ channel.label }}</p>
+              @if (channel.href) {
+                <a class="channel__value" [href]="channel.href">{{ channel.value }}</a>
+              } @else {
+                <p class="channel__value">{{ channel.value }}</p>
+              }
+            </div>
+          </li>
+        }
+      </ul>
+
+      <div class="card contact__social">
+        <p class="contact__social-label">Find me elsewhere</p>
+        <ul class="cluster" style="--gap: 0.5rem">
+          @for (link of socialLinks; track link.label) {
+            <li>
+              <a
+                class="btn btn--ghost btn--icon"
+                [href]="link.href"
+                [attr.aria-label]="link.label"
+                [title]="link.label"
+                [attr.target]="link.href.startsWith('http') ? '_blank' : null"
+                [attr.rel]="link.href.startsWith('http') ? 'noopener noreferrer' : null"
+              >
+                <app-icon [name]="link.icon" [size]="18" />
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+    </aside>
+
+    <form class="contact__form card" [formGroup]="form" (ngSubmit)="submit()" [appReveal]="120" novalidate>
+      @if (sent()) {
+        <p class="form-note" role="status">
+          <app-icon name="check" [size]="16" />
+          Your mail client should have opened with the message ready to send.
+        </p>
+      }
+
+      <div class="field-row">
+        <div class="field">
+          <label class="field__label" for="contact-name">Your name</label>
+          <input
+            id="contact-name"
+            class="field__input"
+            type="text"
+            formControlName="name"
+            autocomplete="name"
+            placeholder="Jane Doe"
+            [class.field__input--invalid]="showError('name')"
+            [attr.aria-invalid]="showError('name')"
+            aria-describedby="error-name"
+          />
+          <p id="error-name" class="field__error" [class.field__error--shown]="showError('name')">
+            {{ errorFor('name') }}
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="contact-email">Email</label>
+          <input
+            id="contact-email"
+            class="field__input"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            inputmode="email"
+            placeholder="jane@company.com"
+            [class.field__input--invalid]="showError('email')"
+            [attr.aria-invalid]="showError('email')"
+            aria-describedby="error-email"
+          />
+          <p id="error-email" class="field__error" [class.field__error--shown]="showError('email')">
+            {{ errorFor('email') }}
+          </p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="contact-subject">Subject</label>
+        <input
+          id="contact-subject"
+          class="field__input"
+          type="text"
+          formControlName="subject"
+          placeholder="Frontend role at …"
+          [class.field__input--invalid]="showError('subject')"
+          [attr.aria-invalid]="showError('subject')"
+          aria-describedby="error-subject"
+        />
+        <p id="error-subject" class="field__error" [class.field__error--shown]="showError('subject')">
+          {{ errorFor('subject') }}
+        </p>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="contact-message">Message</label>
+        <textarea
+          id="contact-message"
+          class="field__input field__input--area"
+          formControlName="message"
+          rows="5"
+          placeholder="A little about the role or project…"
+          [class.field__input--invalid]="showError('message')"
+          [attr.aria-invalid]="showError('message')"
+          aria-describedby="error-message"
+        ></textarea>
+        <p id="error-message" class="field__error" [class.field__error--shown]="showError('message')">
+          {{ errorFor('message') }}
+        </p>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--block">
+        <app-icon name="send" [size]="17" />
+        <span>Send message</span>
+      </button>
+
+      <p class="form-hint">
+        This opens your own mail app — nothing is stored or sent through this site.
+      </p>
+    </form>
+  </div>
+</div>

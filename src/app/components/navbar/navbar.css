@@ -1,0 +1,326 @@
+:host {
+  display: contents;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 50%;
+  transform: translate(-50%, -150%);
+  z-index: 200;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-full);
+  background: var(--brand-600);
+  color: #fff;
+  font-weight: 600;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  border-bottom: 1px solid transparent;
+  transition: background var(--dur-mid) var(--ease-out),
+    border-color var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out);
+  /* Respect notches / rounded corners on phones. */
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+.site-header--scrolled {
+  background: color-mix(in srgb, var(--bg-elevated) 78%, transparent);
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: var(--header-h);
+}
+
+/* ---------- Brand ---------- */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  flex: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--brand-500), var(--accent-500));
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: var(--glow);
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand__name {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--text);
+}
+
+.brand__role {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+/* ---------- Desktop nav ---------- */
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.5rem 0.95rem;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+.nav-link--active {
+  color: var(--text);
+}
+
+.nav-link--active::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--radius-full);
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+}
+
+/* ---------- Header actions ---------- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.header-cta {
+  display: none;
+}
+
+/* ---------- Progress bar ---------- */
+.progress {
+  height: 2px;
+  background: transparent;
+}
+
+.progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand-400), var(--accent-400));
+  transition: width 90ms linear;
+}
+
+/* ---------- Mobile drawer ---------- */
+.drawer-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background: rgba(2, 6, 16, 0.6);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-mid) var(--ease-out),
+    visibility var(--dur-mid) var(--ease-out);
+}
+
+.drawer-scrim--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  width: min(20rem, 86vw);
+  padding: calc(env(safe-area-inset-top, 0) + var(--space-4)) var(--space-5)
+    calc(env(safe-area-inset-bottom, 0) + var(--space-5));
+  background: var(--bg-elevated);
+  border-left: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform var(--dur-mid) var(--ease-out),
+    visibility var(--dur-mid) var(--ease-out);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.drawer--open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.drawer__title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.drawer__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+}
+
+.drawer__item {
+  opacity: 0;
+  transform: translateX(0.75rem);
+}
+
+/* Links cascade in behind the panel once it has opened. */
+.drawer--open .drawer__item {
+  opacity: 1;
+  transform: none;
+  transition: opacity var(--dur-mid) var(--ease-out),
+    transform var(--dur-mid) var(--ease-out);
+  transition-delay: calc(var(--i) * 45ms + 120ms);
+}
+
+.drawer__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.drawer__link:hover {
+  background: var(--surface-sunken);
+  color: var(--text);
+}
+
+.drawer__link--active {
+  background: var(--surface-sunken);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.drawer__link--active app-icon:first-child {
+  color: var(--brand-400);
+}
+
+.drawer__chevron {
+  margin-left: auto;
+  opacity: 0;
+  transform: translateX(-0.25rem);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.drawer__link:hover .drawer__chevron,
+.drawer__link--active .drawer__chevron {
+  opacity: 0.7;
+  transform: none;
+}
+
+.drawer__foot {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+
+.drawer__note {
+  margin-top: var(--space-3);
+  text-align: center;
+  font-size: var(--step--1);
+  color: var(--text-subtle);
+}
+
+/* ---------- Breakpoints ---------- */
+@media (min-width: 40rem) {
+  .header-cta {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 62rem) {
+  .nav-desktop {
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 24rem) {
+  .brand__role {
+    display: none;
+  }
+}

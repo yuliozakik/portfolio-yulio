@@ -1,0 +1,76 @@
+<div class="container">
+  <header class="section-head" [appReveal]="0">
+    <p class="eyebrow">Experience</p>
+    <h2 class="section-title">Where I've <span class="gradient-text">built</span></h2>
+    <p class="section-lede">
+      Four years across banking, multifinance, and HR platforms — each role deeper into ownership.
+    </p>
+  </header>
+
+  <ol class="timeline">
+    @for (job of experiences; track job.id; let i = $index; let last = $last) {
+      <li class="tl-item" [class.tl-item--last]="last" [appReveal]="i * 110">
+        <span class="tl-marker" [class.tl-marker--current]="job.current" aria-hidden="true">
+          <app-icon name="briefcase" [size]="14" />
+        </span>
+
+        <article class="tl-card card card--interactive card--spotlight">
+          <header class="tl-card__head">
+            <div class="tl-card__identity">
+              <h3 class="tl-card__role">{{ job.role }}</h3>
+              <p class="tl-card__company">{{ job.company }}</p>
+              @if (job.client) {
+                <p class="tl-card__client">{{ job.client }}</p>
+              }
+            </div>
+
+            <div class="tl-card__when">
+              @if (job.current) {
+                <span class="badge">
+                  <span class="badge__dot"></span>
+                  Current
+                </span>
+              }
+              <p class="tl-card__period mono">
+                <app-icon name="calendar" [size]="14" />
+                {{ job.period }}
+              </p>
+            </div>
+          </header>
+
+          <p class="card-text tl-card__summary">{{ job.summary }}</p>
+
+          <button
+            type="button"
+            class="tl-card__toggle"
+            [attr.aria-expanded]="isExpanded(job.id)"
+            [attr.aria-controls]="'highlights-' + job.id"
+            (click)="toggle(job.id)"
+          >
+            <app-icon name="arrow-right" [size]="15" />
+            <span>
+              {{ isExpanded(job.id) ? 'Hide' : 'Show' }} {{ job.highlights.length }} highlights
+            </span>
+          </button>
+
+          @if (isExpanded(job.id)) {
+            <ul class="tl-card__highlights" [id]="'highlights-' + job.id">
+              @for (highlight of job.highlights; track highlight) {
+                <li class="highlight">
+                  <app-icon name="check" [size]="15" />
+                  <span>{{ highlight }}</span>
+                </li>
+              }
+            </ul>
+          }
+
+          <ul class="cluster tl-card__stack" style="--gap: 0.4rem">
+            @for (tech of job.stack; track tech) {
+              <li class="tag">{{ tech }}</li>
+            }
+          </ul>
+        </article>
+      </li>
+    }
+  </ol>
+</div>

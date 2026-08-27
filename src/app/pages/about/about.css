@@ -1,0 +1,171 @@
+:host {
+  display: block;
+}
+
+.about {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.about__text {
+  font-size: var(--step-1);
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+/* ---------- Fact list ---------- */
+.about__facts {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+}
+
+.fact__label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin-bottom: 0.3rem;
+}
+
+.fact__label app-icon {
+  color: var(--brand-400);
+}
+
+.fact__value {
+  margin: 0;
+  font-weight: 600;
+  /* Long emails must wrap rather than widen the card on a phone. */
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Value cards ---------- */
+.about__values {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.value__icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--brand-500), var(--accent-500));
+  color: #fff;
+  box-shadow: var(--glow);
+}
+
+.value__title {
+  font-size: var(--step-1);
+  margin-bottom: var(--space-2);
+}
+
+/* ---------- Education ---------- */
+.education {
+  margin-top: clamp(2rem, 6vw, 3.5rem);
+}
+
+.education__heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--step-2);
+  margin-bottom: var(--space-4);
+}
+
+.education__heading app-icon {
+  color: var(--brand-400);
+}
+
+.edu-card__period {
+  font-size: var(--step--1);
+  color: var(--brand-300);
+  margin-bottom: var(--space-2);
+}
+
+.edu-card__title {
+  font-size: var(--step-1);
+}
+
+.edu-card__institution {
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+/* ---------- Courses ---------- */
+.education__count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding-inline: 0.4rem;
+  border-radius: var(--radius-full);
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  color: var(--text-subtle);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.courses {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+}
+
+.course {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+}
+
+.course__track {
+  flex: none;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.course__track[data-track='Java'] {
+  background: color-mix(in srgb, var(--brand-500) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-500) 40%, transparent);
+  color: var(--brand-300);
+}
+
+.course__track[data-track='Cisco'] {
+  background: color-mix(in srgb, var(--accent-500) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-500) 40%, transparent);
+  color: var(--accent-400);
+}
+
+.course__title {
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.courses__source {
+  margin-top: var(--space-3);
+  font-size: var(--step--1);
+}
+
+@media (min-width: 56rem) {
+  .about {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+}

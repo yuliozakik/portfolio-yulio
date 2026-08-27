@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <title>Yulio Zaki Kurniawan — Software Engineer</title>
+  <base href="/">
+
+  <!-- viewport-fit=cover lets the layout reach under notches; we pad with
+       safe-area insets in CSS. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description"
+    content="Software Engineer with 3+ years building web and mobile applications for financial services and HR. Angular, Ionic, Spring Boot, and Node.js.">
+  <meta name="author" content="Yulio Zaki Kurniawan">
+  <meta name="theme-color" content="#04060f" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f6f8fd" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Yulio Zaki Kurniawan — Software Engineer">
+  <meta property="og:description"
+    content="Software Engineer building web and mobile applications for financial services and HR.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!--
+    Resolve the theme before the first paint. The document ships as `dark` so
+    the prerendered HTML has a definite value; without this a visitor who
+    prefers light would see a dark flash until hydration runs ThemeService.
+  -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('portfolio-theme');
+        var theme =
+          stored === 'dark' || stored === 'light'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (e) {
+        /* Storage blocked — the document default (dark) stands. */
+      }
+    })();
+  </script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

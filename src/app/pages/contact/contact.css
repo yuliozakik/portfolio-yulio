@@ -1,0 +1,175 @@
+:host {
+  display: block;
+  text-align: left;
+}
+
+.contact {
+  display: grid;
+  gap: var(--space-5);
+}
+
+/* ---------- Channels ---------- */
+.channels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.channel__icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: none;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface-sunken);
+  color: var(--brand-400);
+}
+
+.channel__body {
+  min-width: 0;
+}
+
+.channel__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.channel__value {
+  font-weight: 600;
+  /* Emails and phone numbers must wrap inside a narrow card, not overflow. */
+  overflow-wrap: anywhere;
+}
+
+.contact__social {
+  margin-top: var(--space-3);
+}
+
+.contact__social-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin-bottom: var(--space-3);
+}
+
+/* ---------- Form ---------- */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.field-row {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field__label {
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.field__input {
+  width: 100%;
+  /* 16px minimum stops iOS Safari zooming the page when a field is focused. */
+  font-size: max(1rem, var(--step-0));
+  min-height: 2.9rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  color: var(--text);
+  transition: border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+
+.field__input::placeholder {
+  color: var(--text-subtle);
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: var(--brand-400);
+  background: var(--surface-solid);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+.field__input--area {
+  resize: vertical;
+  min-height: 8rem;
+  line-height: 1.65;
+}
+
+.field__input--invalid {
+  border-color: var(--danger-fg);
+}
+
+.field__input--invalid:focus {
+  box-shadow: 0 0 0 3px var(--danger-ring);
+}
+
+/* Errors keep their slot reserved so validating does not shift the layout. */
+.field__error {
+  min-height: 1.15rem;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--danger-fg);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.field__error--shown {
+  opacity: 1;
+}
+
+.form-note {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--ok-border);
+  border-radius: var(--radius-md);
+  background: var(--ok-bg);
+  color: var(--ok-fg);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.form-hint {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+  text-align: center;
+}
+
+@media (min-width: 34rem) {
+  .field-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 58rem) {
+  .contact {
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: start;
+  }
+}

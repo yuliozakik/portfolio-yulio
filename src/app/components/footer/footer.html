@@ -1,0 +1,65 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <button type="button" class="footer__logo" (click)="toTop()">
+          <span class="footer__mark" aria-hidden="true">YZ</span>
+          <span>
+            <span class="footer__name">{{ profile.name }}</span>
+            <span class="footer__role">{{ profile.role }}</span>
+          </span>
+        </button>
+        <p class="footer__tagline">{{ profile.tagline }}</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <p class="footer__heading">Sections</p>
+        <ul>
+          @for (item of navItems; track item.id) {
+            <li>
+              <button type="button" class="footer__link" (click)="go(item.id)">
+                {{ item.label }}
+              </button>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <div class="footer__connect">
+        <p class="footer__heading">Connect</p>
+        <ul>
+          @for (link of socialLinks; track link.label) {
+            <li>
+              <a
+                class="footer__link footer__link--icon"
+                [href]="link.href"
+                [attr.target]="link.href.startsWith('http') ? '_blank' : null"
+                [attr.rel]="link.href.startsWith('http') ? 'noopener noreferrer' : null"
+              >
+                <app-icon [name]="link.icon" [size]="15" />
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__base">
+      <p class="footer__copy">© {{ year }} {{ profile.name }}. All rights reserved.</p>
+      <p class="footer__built">Built with Angular and hand-written CSS.</p>
+    </div>
+  </div>
+</footer>
+
+<button
+  type="button"
+  class="fab"
+  [class.fab--visible]="showFab()"
+  [attr.tabindex]="showFab() ? 0 : -1"
+  aria-label="Back to top"
+  title="Back to top"
+  (click)="toTop()"
+>
+  <app-icon name="arrow-up" [size]="20" />
+</button>

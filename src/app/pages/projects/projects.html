@@ -1,0 +1,74 @@
+<div class="container">
+  <header class="section-head" [appReveal]="0">
+    <p class="eyebrow">Projects</p>
+    <h2 class="section-title">Selected <span class="gradient-text">work</span></h2>
+    <p class="section-lede">
+      Production systems for financial services and HR — the features behind them, not just the
+      screenshots.
+    </p>
+  </header>
+
+  <div class="filters" [appReveal]="60" role="group" aria-label="Filter projects by type">
+    @for (filter of filters(); track filter.key) {
+      <button
+        type="button"
+        class="chip"
+        [attr.aria-pressed]="activeFilter() === filter.key"
+        (click)="setFilter(filter.key)"
+      >
+        <span>{{ filter.label }}</span>
+        <span class="chip__count">{{ filter.count }}</span>
+      </button>
+    }
+  </div>
+
+  <p class="filters__status" aria-live="polite">
+    Showing {{ projects().length }} {{ projects().length === 1 ? 'project' : 'projects' }}
+  </p>
+
+  <ul class="auto-grid project-grid" style="--min: 20rem">
+    @for (project of projects(); track project.id; let i = $index) {
+      <li
+        class="project card card--interactive card--spotlight"
+        [appReveal]="i * 80"
+        (mousemove)="trackPointer($event)"
+      >
+        <header class="project__head">
+          <ul class="project__platforms">
+            @for (platform of project.platforms; track platform) {
+              <li class="project__platform">{{ platform }}</li>
+            }
+          </ul>
+          <p class="project__period mono">{{ project.period }}</p>
+        </header>
+
+        <h3 class="project__title">{{ project.title }}</h3>
+        <p class="project__client">
+          <app-icon name="briefcase" [size]="14" />
+          {{ project.client }}
+        </p>
+
+        <p class="card-text project__summary">{{ project.summary }}</p>
+
+        <ul class="project__highlights">
+          @for (highlight of project.highlights; track highlight) {
+            <li>{{ highlight }}</li>
+          }
+        </ul>
+
+        <ul class="cluster project__tech" style="--gap: 0.4rem">
+          @for (tech of project.tech; track tech) {
+            <li class="tag">{{ tech }}</li>
+          }
+        </ul>
+      </li>
+    } @empty {
+      <li class="card project-empty">
+        <p class="card-text">No projects in this category yet.</p>
+        <button type="button" class="btn btn--quiet" (click)="setFilter('all')">
+          Show all work
+        </button>
+      </li>
+    }
+  </ul>
+</div>

@@ -1,0 +1,47 @@
+<div class="container">
+  <header class="section-head section-head--center" [appReveal]="0">
+    <p class="eyebrow">Skills</p>
+    <h2 class="section-title">The <span class="gradient-text">toolkit</span></h2>
+    <p class="section-lede">
+      {{ totalSkills() }} technologies across {{ categories.length }} disciplines — weighted by how
+      often I actually reach for them.
+    </p>
+  </header>
+
+  <ul class="auto-grid" style="--min: 19rem">
+    @for (category of categories; track category.id; let i = $index) {
+      <li class="skill-card card card--interactive card--spotlight" [appReveal]="i * 70">
+        <header class="skill-card__head">
+          <span class="skill-card__icon">
+            <app-icon [name]="category.icon" [size]="20" />
+          </span>
+          <div>
+            <h3 class="skill-card__title">{{ category.title }}</h3>
+            <p class="skill-card__blurb">{{ category.blurb }}</p>
+          </div>
+        </header>
+
+        <ul class="skill-list">
+          @for (skill of category.skills; track skill.name) {
+            <li class="skill">
+              <div class="skill__row">
+                <span class="skill__name">{{ skill.name }}</span>
+                <span class="skill__level mono">{{ skill.level }}%</span>
+              </div>
+              <div
+                class="meter"
+                role="meter"
+                [attr.aria-label]="skill.name + ' proficiency'"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                [attr.aria-valuenow]="skill.level"
+              >
+                <div class="meter__fill" [style.--level.%]="skill.level"></div>
+              </div>
+            </li>
+          }
+        </ul>
+      </li>
+    }
+  </ul>
+</div>
